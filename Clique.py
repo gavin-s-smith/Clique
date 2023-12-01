@@ -234,6 +234,14 @@ def read_data(delimiter, feature_columns, path):
     return np.genfromtxt(path, dtype=float, delimiter=delimiter, usecols=feature_columns)
 
 
+def clique( df, xsi, tau):
+    data = normalize_features(df)
+
+    clusters = run_clique(data=data,
+                          xsi=xsi,
+                          tau=tau)
+    return clusters
+
 # Sample run: python Clique.py mouse.csv [0,1] 2 3 0.3 " " output_clusters.txt
 if __name__ == "__main__":
     # Clustering with command line parameters

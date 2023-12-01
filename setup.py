@@ -8,7 +8,7 @@ setup(
     version='0.1',
     url='https://github.com/gavin-s-smith/Clique',
     license='MIT',
-    py_modules=['clique'],
+    py_modules=['Clique'],
     author='Gavin Smith',
     author_email='gavin.smith@nottingham.ac.uk',
     install_requires=[],

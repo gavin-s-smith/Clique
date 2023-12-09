@@ -63,11 +63,11 @@ def get_dense_units_for_dim(data, prev_dim_dense_units, dim, xsi, tau):
         for i in range(len(candidates)):
             if is_data_in_projection(data[dataIndex], candidates[i], xsi):
                 projection[i] += 1
-    print("projection: ", projection)
+    #print("projection: ", projection)
 
     # Return elements above density threshold
     is_dense = projection > tau * number_of_data_points
-    print("is_dense: ", is_dense)
+    #print("is_dense: ", is_dense)
     return np.array(candidates)[is_dense]
 
 
@@ -129,7 +129,7 @@ def get_clusters(dense_units, data, xsi):
     for i in range(number_of_components):
         # Get dense units of the cluster
         cluster_dense_units = dense_units[np.where(component_list == i)]
-        print("cluster_dense_units: ", cluster_dense_units.tolist())
+        #print("cluster_dense_units: ", cluster_dense_units.tolist())
 
         # Get dimensions of the cluster
         dimensions = set()
@@ -153,9 +153,9 @@ def get_one_dim_dense_units(data, tau, xsi):
     for f in range(number_of_features):
         for element in data[:, f]:
             projection[int(element * xsi % xsi), f] += 1
-    print("1D projection:\n", projection, "\n")
+    #print("1D projection:\n", projection, "\n")
     is_dense = projection > tau * number_of_data_points
-    print("is_dense:\n", is_dense)
+    #print("is_dense:\n", is_dense)
     one_dim_dense_units = []
     for f in range(number_of_features):
         for unit in range(xsi):
@@ -216,7 +216,7 @@ def run_clique(data, xsi, tau):
     current_dim = 2
     number_of_features = np.shape(data)[1]
     while (current_dim <= number_of_features) & (len(dense_units) > 0):
-        print("\n", str(current_dim), " dimensional clusters:")
+        #print("\n", str(current_dim), " dimensional clusters:")
         dense_units = get_dense_units_for_dim(
             data, dense_units, current_dim, xsi, tau)
         for cluster in get_clusters(dense_units, data, xsi):
@@ -271,7 +271,7 @@ if __name__ == "__main__":
     path = os.path.join(os.path.abspath(os.path.dirname(__file__)), file_name)
     original_data = read_data(delimiter, feature_columns, path)
     labels = read_labels(delimiter, label_column, path)
-
+    print(type(original_data))
     # Normalize each dimension to the [0,1] range
     data = normalize_features(original_data)
 

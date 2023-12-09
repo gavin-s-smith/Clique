@@ -50,7 +50,7 @@ def plot_clusters(data, clusters, title, xsi):
             c_attrs = list(c.dimensions)
             c_elems = list(c.data_point_ids)
 
-            if dim == 1:  # one-dimensional clusters
+            if dim == 1:  # one-dimensional clust ers
                 x = data[c_elems, 0] if c_attrs[0] == 0 else [0] * c_size
                 y = data[c_elems, 1] if c_attrs[0] == 1 else [0] * c_size
             elif dim == 2:  # two-dimensional clusters
